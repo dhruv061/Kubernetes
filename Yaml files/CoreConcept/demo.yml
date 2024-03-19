@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+name: demo
+labels: my-app
+type: front-end
