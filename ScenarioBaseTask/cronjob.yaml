@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: date-printer
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: date-printer
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - date
+            resources:
+              requests:
+                cpu: "1"
+                memory: "1Gi"
+          restartPolicy: OnFailure

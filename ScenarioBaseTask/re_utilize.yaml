@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-consuming-pod
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["/bin/sh", "-c", "while true; do openssl prime 99999999999999999999999999999999999999999999999999999999999999999999999999999999; done"]
+    resources:
+      limits:
+        memory: "2.23Gi"
+        cpu: "930m"
+      requests:
+        memory: "2.23Gi"
+        cpu: "930m"
