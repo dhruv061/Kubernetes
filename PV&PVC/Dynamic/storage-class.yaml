@@ -1,0 +1,10 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: my-sc
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2 
+  zones: ap-south-1a #Add multiplt Zones
+  iopsPerGB: "10" 
+  fsType: ext4
