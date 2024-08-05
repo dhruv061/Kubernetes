@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-egress
+  namespace: dhruv
+spec:
+  #pod in which networkpolicy apply
+  podSelector:
+    matchLabels:
+      app: secure-app
+
+  #policy types
+  policyTypes:
+  - Egress
+
+  #From where traffic comes
+  egress: []

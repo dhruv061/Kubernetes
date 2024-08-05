@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-specific-ports
+  namespace: dhruv
+spec:
+  #pod in which networkpolicy apply
+  podSelector:
+    matchLabels:
+      app: web-app
+
+  #policy types
+  policyTypes:
+  - Ingress
+  
+  #In which port give access to traffic that comes from web-app pod
+  ingress:
+  - ports:
+    - protocol: TCP
+      port: 80
+    - protocol: TCP
+      port: 443

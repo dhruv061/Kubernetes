@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-one-pod
+  namespace: dhruv
+spec:
+  #pod in which networkpolicy apply
+  podSelector:
+    matchLabels:
+      app: backend
+  #policy types
+  policyTypes:
+  - Ingress
+  - Egress
+  #From where traffic comes
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: frontend

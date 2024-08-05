@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-namespace-ingress
+  namespace: dhruv
+spec:
+  #pod in which networkpolicy apply
+  podSelector:
+    matchLabels:
+      app: my-app
+
+  #policy types
+  policyTypes:
+  - Ingress
+  
+  #From where traffic comes
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          project: my-namespace
